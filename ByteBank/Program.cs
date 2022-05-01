@@ -27,7 +27,9 @@ namespace ByteBank
 
             gerenciador.Registrar(pedro);
             gerenciador.Registrar(leticia);
-            Console.WriteLine(gerenciador.GetTotalBonificacao());
+            Console.WriteLine("Bonificação do Pedro: " + pedro.GetBonificacao());
+            Console.WriteLine("Bonificação da Letícia: " + leticia.GetBonificacao());
+            Console.WriteLine("Total em bonificações: " + gerenciador.GetTotalBonificacao());
 
             Console.ReadKey();
         }
