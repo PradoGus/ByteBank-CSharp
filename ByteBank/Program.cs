@@ -1,4 +1,6 @@
-﻿using ByteBank.Funcionarios;
+﻿using ByteBank.Clientes;
+using ByteBank.Contas;
+using ByteBank.Funcionarios;
 using ByteBank.Sistemas;
 using System;
 using System.Collections.Generic;
@@ -12,17 +14,21 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            SistemaInterno si = new SistemaInterno();
-            Diretor carla = new Diretor("555");
-            carla.Nome = "Carla";
-            carla.Senha = "123";
+            Cliente gustavo = new Cliente();
+            Cliente ricardo = new Cliente();
+            Conta contaGustavo = new Conta(072, 35368);
+            Conta contaRicardo = new Conta(072, 3288);
+            contaGustavo.Cliente = gustavo;
+            contaRicardo.Cliente = ricardo;
 
-            GerenteDeConta diego = new GerenteDeConta("123");
-            diego.Nome = "Diego";
-            diego.Senha = "abc";
+            Console.WriteLine("Saldo do Gustavo: " + contaGustavo.Saldo);
+            contaGustavo.Depositar(100);
+            Console.WriteLine("Saldo do Gustavo: " + contaGustavo.Saldo);
+            Console.WriteLine("Saldo do Ricardo: " + contaRicardo.Saldo);
+            contaGustavo.Transferir(contaRicardo, 100);
+            Console.WriteLine("Saldo do Ricardo: " + contaRicardo.Saldo);
+            Console.WriteLine("Saldo do Gustavo: " + contaGustavo.Saldo);
 
-            si.Logar(carla, "123");
-            si.Logar(diego, "");
 
 
             Console.ReadKey();
