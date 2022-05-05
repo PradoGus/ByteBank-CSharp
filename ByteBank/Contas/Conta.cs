@@ -1,4 +1,5 @@
 ﻿using ByteBank.Clientes;
+using ByteBank.Excecoes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,19 @@ namespace ByteBank.Contas
     {
 
         public Cliente Cliente  { get; set; }
-        public int Agencia { get; set; }
-        public int Codigo { get; set; }
+        public int Agencia { get; }
+        public int Codigo { get; }
         public double Saldo { get; private set; }
 
         public Conta (int agencia, int codigo)
         {
-            Codigo = codigo;
-            Agencia = agencia;
+           ChecaAgenciaCodigo(agencia, codigo); 
         }
 
         public void Depositar(double valor)
         {
             Saldo += valor;
+            Console.WriteLine("Depósito de R$" + valor + " efetuado com sucesso!");
         }
         public bool Sacar(double valor)
         {
@@ -58,6 +59,13 @@ namespace ByteBank.Contas
                 
             }
             
+        }
+        public void ChecaAgenciaCodigo(int agencia, int codigo)
+        {
+            if ((agencia <= 0) || (codigo <= 0))
+            {
+                throw new AgenciaZeradaException("Agência ou código não podem ser zerados!");
+            }
         }
     }
 }

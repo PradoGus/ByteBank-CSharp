@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Clientes\Cliente.cs" />
     <Compile Include="Contas\Conta.cs" />
+    <Compile Include="Excecoes\AgenciaZeradaException.cs" />
     <Compile Include="Funcionarios\Auxiliar.cs" />
     <Compile Include="Funcionarios\Designer.cs" />
     <Compile Include="Funcionarios\Diretor.cs" />

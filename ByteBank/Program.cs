@@ -14,23 +14,16 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            Cliente gustavo = new Cliente();
-            Cliente ricardo = new Cliente();
-            Conta contaGustavo = new Conta(072, 35368);
-            Conta contaRicardo = new Conta(072, 3288);
-            contaGustavo.Cliente = gustavo;
-            contaRicardo.Cliente = ricardo;
-
-            Console.WriteLine("Saldo do Gustavo: " + contaGustavo.Saldo);
-            contaGustavo.Depositar(100);
-            Console.WriteLine("Saldo do Gustavo: " + contaGustavo.Saldo);
-            Console.WriteLine("Saldo do Ricardo: " + contaRicardo.Saldo);
-            contaGustavo.Transferir(contaRicardo, 100);
-            Console.WriteLine("Saldo do Ricardo: " + contaRicardo.Saldo);
-            Console.WriteLine("Saldo do Gustavo: " + contaGustavo.Saldo);
-
-
-
+            try
+            {
+                Conta contaGustavo = new Conta(1, 35368);
+                contaGustavo.Depositar(100);
+            } 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             Console.ReadKey();
         }
 
